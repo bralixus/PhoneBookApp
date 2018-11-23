@@ -1,0 +1,29 @@
+﻿
+@model PhoneBookApp.Models.PersonModel
+@using (Html.BeginForm("Edit", "Person", FormMethod.Post))
+{
+    <dir><h3>Edycja wpisu</h3></dir>
+    @Html.HiddenFor(x => x.ID)
+
+    <dir>@Html.Label("Imię")</dir>
+    <dir>@Html.TextBoxFor(x => x.Name)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Name)</dir>
+
+    <dir>@Html.Label("Nazwisko")</dir>
+    <dir>@Html.TextBoxFor(x => x.LastName)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.LastName)</dir>
+
+    <dir>@Html.Label("Numer telefonu")</dir>
+    <dir>@Html.TextBoxFor(x => x.Phone)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Phone)</dir>
+
+    <dir>@Html.LabelFor(x => x.Email)</dir>
+    <dir>@Html.TextBoxFor(x => x.Email)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Email)</dir>
+
+    <dir><button type="submit">Zapisz zmiany</button><button>@Html.ActionLink("Anuluj", "Index")</button></dir>
+    
+
+}
+
+

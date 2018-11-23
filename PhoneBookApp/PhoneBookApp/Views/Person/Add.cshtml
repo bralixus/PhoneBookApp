@@ -1,0 +1,30 @@
+﻿@model PhoneBookApp.Models.PersonModel
+
+@using (Html.BeginForm("Add", "Person", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ID)
+
+    <dir>@Html.Label("Imię")</dir>
+    <dir>@Html.TextBoxFor(x => x.Name)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Name)</dir>
+
+    <dir>@Html.Label("Nazwisko")</dir>
+    <dir>@Html.TextBoxFor(x => x.LastName)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.LastName)</dir>
+
+    <dir>@Html.Label("Numer telefonu")</dir>
+    <dir>@Html.TextBoxFor(x => x.Phone)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Phone)</dir>
+
+    <dir>@Html.LabelFor(x => x.Email)</dir>
+    <dir>@Html.TextBoxFor(x => x.Email)</dir>
+    <dir>@Html.ValidationMessageFor(x => x.Email)</dir>
+
+    @Html.HiddenFor(x => x.Created)
+
+    @Html.HiddenFor(x => x.Updated)
+
+
+    <dir><button type="submit">Wyślij</button></dir>
+}
+

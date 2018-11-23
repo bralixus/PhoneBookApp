@@ -1,0 +1,77 @@
+﻿@using PhoneBookApp.Models
+@model List<PhoneBookApp.Models.PersonModel>
+
+<dir><h1>PhoneBookApp</h1></dir>
+<dir>
+    @using (Html.BeginForm("Index", "Person", FormMethod.Get))
+    {
+        <div>
+            @Html.TextBox("search", "")<button>Szukaj</button>
+        </div>
+
+    }
+</dir>
+<dir>@Html.ActionLink("Dodaj nowy wpis", "Add")</dir>
+
+<p></p>
+<dir>
+    <Table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Utworzono</th>
+            <th>Zmodyfikowano</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var element in Model)
+        {
+            <tr>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.ID)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.Name)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.LastName)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.Phone)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.Email)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.Created)</td>
+                <td style="background-color: whitesmoke">@Html.DisplayFor(x => element.Updated)</td>
+                <td>@Html.ActionLink("Edytuj", "Edit", new { element.ID })</td>
+                <td>@Html.ActionLink("Usuń", "Remove", new { element.ID })</td>
+            </tr>
+
+        }
+        </tbody>
+    </Table>
+</dir>
+<dir>
+    @if (ViewBag.page == 1)
+    {
+        <div>
+
+            @Html.ActionLink("Kolejna strona", "Index", new { page = @ViewBag.page + 1 })
+
+        </div>
+    }
+    @if (ViewBag.page > 1)
+    {
+        if (Model.Count<10)
+        {
+            <div>
+                @Html.ActionLink("Poprzednia strona", "Index", new { page = @ViewBag.page - 1 })
+            </div>
+        }
+        else
+        {
+            <div>
+                @Html.ActionLink("Poprzednia strona", "Index", new { page = @ViewBag.page - 1 }) |
+                @Html.ActionLink("Kolejna strona", "Index", new { page = @ViewBag.page + 1 })
+            </div>
+        }
+
+    }
+</dir>
+

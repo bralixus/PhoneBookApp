@@ -1,0 +1,43 @@
+﻿@using PhoneBookApp.Models
+@model PhoneBookApp.Models.PersonModel
+@using (Html.BeginForm("RemoveConfirm", "Person", FormMethod.Post))
+{
+
+    <dir><h3>Czy potwierdzasz usunięcie?</h3></dir>
+    @Html.HiddenFor(x => x.ID)
+    <dir>
+        <Table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>Utworzono</th>
+                <th>Zmodyfikowano</th>
+           
+            </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                    <td>@Html.DisplayFor(x => x.ID)</td>
+                    <td>@Html.DisplayFor(x => x.Name)</td>
+                    <td>@Html.DisplayFor(x => x.LastName)</td>
+                    <td>@Html.DisplayFor(x => x.Phone)</td>
+                    <td>@Html.DisplayFor(x => x.Email)</td>
+                    <td>@Html.DisplayFor(x => x.Created)</td>
+                    <td>@Html.DisplayFor(x => x.Updated)</td>
+                </tr>
+                        
+            </tbody>
+        </Table>
+    </dir>
+
+    <dir><button type="submit">Usuń</button><button>@Html.ActionLink("Anuluj", "Index")</button></dir>
+    
+
+}
+
+
